@@ -1,8 +1,12 @@
 L'Âme de Honaine — Pêcherie
-Maquette de site (non publiée)
+Maquette de site
 
-Ouvrir le site
--------------
+Adresse en ligne
+----------------
+https://sayler991.github.io/Ame_de_Honaine_site/
+
+Ouvrir le site en local
+-----------------------
 Double-cliquez sur le fichier index.html, ou glissez-le dans un navigateur
 (Chrome, Firefox, Safari, Edge). Une connexion internet est utile pour
 afficher la carte OpenStreetMap.
@@ -11,20 +15,25 @@ Contenu
 -------
 - index.html : la page
 - css/ et js/ : apparence et interactions
-- images/ : photos du restaurant (façade, enseigne, plateau) et photos
-  d'ambiance libres de droits
+- images/ : photos du restaurant, photos de la fiche Google, et deux
+  photos d'illustration (dessert, jus)
 - fonts/ : polices installées dans le dossier, pas besoin de Google
 - CREDITS.txt : sources des images et des polices
+- fiche_google.odt : texte prêt à coller pour la fiche Google
+
+Commande
+--------
+Le client compose un panier à partir de la carte, puis voit un
+récapitulatif. Aucune commande n'est envoyée en ligne : il doit
+appeler le 0773 98 48 53 pour la confirmer.
 
 À confirmer
 -----------
-Les prix de la carte sont des exemples. WhatsApp et le nom de rue
-exact ne sont pas indiqués. Le formulaire de réservation n'envoie
-rien pour l'instant.
+Les prix de la carte sont des exemples. Le nom de rue exact n'est
+pas indiqué sur la fiche Google. Cette page reste une maquette
+(balise noindex conservée).
 
 Horaires indiqués : tous les jours 11h – 23h
 (horaires susceptibles de changer).
 Téléphone (fiche Google) : 0773 98 48 53.
 Adresse (plus code, fiche Google) : 58GX+P6Q, Honaïne.
-
-Cette page reste une maquette (prix d'exemple).

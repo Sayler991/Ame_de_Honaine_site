@@ -1,7 +1,7 @@
 Crédits — L'Âme de Honaine — Pêcherie (maquette)
 
 ==================================================
-PHOTOS DU RESTAURANT
+PHOTOS DU RESTAURANT (fournies par le client)
 ==================================================
 Fournies par le client pour cette maquette.
 Les fichiers originaux n'ont pas été altérés.
@@ -18,34 +18,73 @@ Copies web : redimensionnées et légère correction de lumière uniquement
   Logo circulaire recadré à partir de l'enseigne verticale.
 
 ==================================================
-PHOTOS D'AMBIANCE (banques d'images libres)
+PHOTOS PUBLIÉES SUR LA FICHE GOOGLE
 ==================================================
-Ces images ne représentent pas le restaurant ni la plage de Tafsout.
-Elles illustrent des plats ou un bateau de pêche, à remplacer
-par des photos de l'établissement.
+Source : fiche Google de L'Âme de Honaine — Pêcherie
+(kgmid /g/11zywys31z, identifiant de lieu ChIJRTY3UADjeA0R80w7liyhXxM,
+plus code 58GX+P6Q, Honaïne).
+Liens fournis par le client :
+https://share.google/vAtES9X7G9A1aluq8
+https://maps.app.goo.gl/AyRdqwik2RZVF65s5
 
-Licence Unsplash : https://unsplash.com/license
-(utilisation libre, y compris commerciale ; attribution du photographe
-recommandée. La page photographe n'a pas pu être ouverte depuis
-cet environnement : l'identifiant Unsplash est indiqué pour reporter
-le nom depuis unsplash.com.)
+Ces photos ont été publiées sur la fiche Google (certaines par des
+visiteurs). L'autorisation de les réutiliser sur le site du restaurant
+devrait être confirmée auprès du propriétaire et, le cas échéant, des
+auteurs des photos mises en ligne par des utilisateurs.
 
-- images/crevettes-plat.jpg
-  Unsplash, photo-1604908176997-125f25cc6f3d
-  https://unsplash.com/photos/photo-1604908176997-125f25cc6f3d
+Récupération : la page Maps est un habillage JavaScript, les URL des
+photos (lh3.googleusercontent.com, taille demandée =w2048-h2048)
+n'étaient pas dans le HTML statique ; elles ont été collectées avec
+un navigateur. La fiche indiquait « 31 photos ». 14 fichiers ont été
+téléchargés, dont 4 doublons (variantes grass-cs identiques aux
+gps-cs), 1 fichier non image (avatar), soit 10 photos uniques. Ont
+été écartées : une vue trop sombre avec des pieds dans le cadre, et
+un plateau un peu flou tenu à la main. 8 photos nettes et bien
+exposées ont été conservées. Copies web : même légère correction
+de lumière que ci-dessus. Deux plateaux (friture large et grillades) ont été recadrés pour retirer
+des personnes ou des chaussures en bord de cadre.
+
+- images/gmaps-grillade-ardoise.jpg (+ -sm.jpg)
+  Poisson grillé sur ardoise, citron et salade.
+- images/gmaps-grillade-citron.jpg (+ -sm.jpg)
+  Poisson grillé, citron, oignon rouge et herbes.
+- images/gmaps-plateau-grilles.jpg (+ -sm.jpg)
+  Long plateau de poissons grillés.
+- images/gmaps-plateau-friture-large.jpg (+ -sm.jpg)
+  Grand plateau de poissons et crevettes (recadré).
+- images/gmaps-poisson-carte.jpg (+ -sm.jpg)
+  Poisson présenté avec une carte « Lame de Honain ».
+- images/gmaps-etale-crevettes.jpg (+ -sm.jpg)
+  Étal : crevettes et poissons.
+- images/gmaps-etale-poissons.jpg (+ -sm.jpg)
+  Étal de poissons frais.
+- images/gmaps-facade-rue.jpg (+ -sm.jpg)
+  Façade vue de la rue, de nuit.
+
+==================================================
+PHOTOS D'ILLUSTRATION (banques d'images libres)
+==================================================
+Ces images ne représentent pas le restaurant ni ses plats.
+Elles illustrent seulement le dessert et les boissons, en l'absence
+de photo correspondante sur la fiche Google. Légende sur le site :
+« Photo d'illustration ».
 
 Licence Pexels : https://www.pexels.com/license/
 (utilisation libre, y compris commerciale ; crédit du photographe
-encouragé. Reporter le nom depuis la page Pexels indiquée.)
+encouragé.)
 
-- images/dorade-grillee.jpg
-  Pexels #3296271 — https://www.pexels.com/photo/3296271/
-- images/poulpe-cuit.jpg
-  Pexels #3655916 — https://www.pexels.com/photo/3655916/
-- images/bateau-peche.jpg
-  Pexels #1630039 — https://www.pexels.com/photo/1630039/
-- images/fruits-de-mer.jpg
-  Pexels #566345 — https://www.pexels.com/photo/566345/
+- images/illus-creme-caramel.jpg (+ -sm.jpg)
+  Pexels #12322407 — Max Griss
+  https://www.pexels.com/photo/12322407/
+- images/illus-jus.jpg (+ -sm.jpg)
+  Pexels #1337824
+  https://www.pexels.com/photo/1337824/
+
+Des photos d'ambiance précédemment utilisées
+(crevettes-plat.jpg, dorade-grillee.jpg, poulpe-cuit.jpg,
+bateau-peche.jpg, fruits-de-mer.jpg) restent dans le dossier images/
+mais ne sont plus affichées sur le site, remplacées par les photos
+de la fiche Google.
 
 ==================================================
 POLICES
@@ -60,6 +99,6 @@ Toutes sous SIL Open Font License 1.1 :
 CARTE
 ==================================================
 Fond de carte : © OpenStreetMap contributors, ODbL.
-Marqueur : plage de Tafsout, Honaine
-(OpenStreetMap, way 184015694, env. 35.1863373, -1.6475097).
-L'emplacement exact du restaurant est à confirmer.
+Marqueur : emplacement de la fiche Google,
+plus code 58GX+P6Q, environ 35,1768° N, 1,6519° O
+(35.1768393, -1.6518789).
