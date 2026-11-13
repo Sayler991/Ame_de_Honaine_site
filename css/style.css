@@ -677,6 +677,14 @@ h3 { font-size: 1.45rem; margin: 0 0 0.8rem; color: var(--gold-bright); }
 @media (min-width: 840px) {
   .hours-grid { grid-template-columns: 0.8fr 1.2fr; align-items: start; }
 }
+.hours-statement {
+  margin: 1.1rem 0 0.7rem;
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 3.2vw, 2.15rem);
+  font-weight: 600;
+  color: var(--gold-bright);
+  letter-spacing: 0.02em;
+}
 .hours-table {
   width: 100%;
   border-collapse: collapse;
@@ -694,7 +702,7 @@ h3 { font-size: 1.45rem; margin: 0 0 0.8rem; color: var(--gold-bright); }
   border-bottom: 1px solid rgba(238, 243, 246, 0.08);
 }
 .hours-table th { font-weight: 500; width: 40%; color: var(--foam); }
-.hours-table td { color: var(--muted); font-style: italic; }
+.hours-table td { color: var(--foam); font-style: normal; }
 .map-title { margin-top: 0; }
 .map-frame {
   margin-top: 0.8rem;

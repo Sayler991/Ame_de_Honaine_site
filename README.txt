@@ -16,9 +16,15 @@ Contenu
 - fonts/ : polices installées dans le dossier, pas besoin de Google
 - CREDITS.txt : sources des images et des polices
 
-À confirmer avant publication
------------------------------
-Prix, horaires, numéro de téléphone, WhatsApp, adresse exacte.
-Le formulaire de réservation n'envoie rien pour l'instant.
+À confirmer
+-----------
+Les prix de la carte sont des exemples. WhatsApp et le nom de rue
+exact ne sont pas indiqués. Le formulaire de réservation n'envoie
+rien pour l'instant.
 
-Cette maquette ne doit pas être mise en ligne sans votre accord.
+Horaires indiqués : tous les jours 11h – 23h
+(horaires susceptibles de changer).
+Téléphone (fiche Google) : 0773 98 48 53.
+Adresse (plus code, fiche Google) : 58GX+P6Q, Honaïne.
+
+Cette page reste une maquette (prix d'exemple).
