@@ -16,6 +16,12 @@ Copies web : redimensionnées et légère correction de lumière uniquement
 - images/facade-nuit.jpg (+ -sm.jpg)
   Façade de nuit, enseigne « L'AME DE HONAINE », terrasse à l'étage
   (photo précédente, conservée dans la galerie).
+- images/salle-interieur.jpg (+ -sm.jpg)
+  Salle : tables blanches, chaises noires, frigo Coca-Cola.
+  Original conservé hors site, non modifié (1280×720).
+- images/terrasse-nuit.jpg (+ -sm.jpg)
+  Terrasse de nuit : store blanc, gazon, lumières.
+  Original conservé hors site, non modifié (720×1280, portrait).
 - images/enseigne-pecherie.jpg (+ -sm.jpg)
   Enseigne verticale lumineuse « PÊCHERIE » et logo rond.
 - images/plateau-friture.jpg (+ -sm.jpg)

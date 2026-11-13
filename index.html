@@ -49,6 +49,7 @@
       <nav class="nav" id="menu-principal" aria-label="Sections">
         <a href="#accueil">Accueil</a>
         <a href="#carte">La carte</a>
+        <a href="#lieu">Salle</a>
         <a href="#galerie">Galerie</a>
         <a href="#venir">Venir</a>
         <a href="#commander">Commander</a>
@@ -84,6 +85,8 @@
 
     <div class="photo-marquee" aria-hidden="true">
       <div class="photo-marquee-track">
+        <img src="images/salle-interieur-sm.jpg" alt="" width="900" height="506">
+        <img src="images/terrasse-nuit-sm.jpg" alt="" width="506" height="900">
         <img src="images/gmaps-grillade-ardoise-sm.jpg" alt="" width="675" height="900">
         <img src="images/plateau-friture-sm.jpg" alt="" width="900" height="507">
         <img src="images/gmaps-etale-crevettes-sm.jpg" alt="" width="675" height="900">
@@ -94,6 +97,8 @@
         <img src="images/gmaps-etale-poissons-sm.jpg" alt="" width="900" height="675">
         <img src="images/gmaps-facade-rue-sm.jpg" alt="" width="675" height="900">
         <img src="images/gmaps-plateau-friture-large-sm.jpg" alt="" width="900" height="823">
+        <img src="images/salle-interieur-sm.jpg" alt="" width="900" height="506">
+        <img src="images/terrasse-nuit-sm.jpg" alt="" width="506" height="900">
         <img src="images/gmaps-grillade-ardoise-sm.jpg" alt="" width="675" height="900">
         <img src="images/plateau-friture-sm.jpg" alt="" width="900" height="507">
         <img src="images/gmaps-etale-crevettes-sm.jpg" alt="" width="675" height="900">
@@ -365,12 +370,47 @@
       </div>
     </section>
 
+
+    <section class="section section-lieu" id="lieu">
+      <div class="container">
+        <header class="section-head reveal">
+          <h2>Salle &amp; terrasse</h2>
+        </header>
+        <div class="lieu-grid">
+          <button type="button" class="lieu-card reveal lightbox-open" data-full="images/salle-interieur.jpg" data-caption="Salle — photo du restaurant">
+            <img
+              src="images/salle-interieur-sm.jpg"
+              srcset="images/salle-interieur-sm.jpg 900w, images/salle-interieur.jpg 1280w"
+              sizes="(max-width: 700px) 100vw, 65vw"
+              alt="Salle du restaurant : tables blanches, chaises noires et frigo Coca-Cola."
+              width="1280" height="720">
+            <span class="lieu-label">Salle</span>
+          </button>
+          <button type="button" class="lieu-card reveal lightbox-open" data-full="images/terrasse-nuit.jpg" data-caption="Terrasse de nuit — photo du restaurant">
+            <img
+              src="images/terrasse-nuit-sm.jpg"
+              srcset="images/terrasse-nuit-sm.jpg 506w, images/terrasse-nuit.jpg 720w"
+              sizes="(max-width: 700px) 100vw, 40vw"
+              alt="Terrasse de nuit : store blanc, gazon et lumières."
+              width="720" height="1280">
+            <span class="lieu-label">Terrasse</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
     <section class="section section-galerie" id="galerie">
       <div class="container">
         <header class="section-head reveal">
           <h2>Galerie</h2>
         </header>
         <div class="gallery-grid">
+          <button type="button" class="gallery-item wide reveal lightbox-open" data-full="images/salle-interieur.jpg" data-caption="Salle — photo du restaurant">
+            <img src="images/salle-interieur-sm.jpg" alt="Salle du restaurant : tables blanches et chaises noires." width="900" height="506">
+          </button>
+          <button type="button" class="gallery-item reveal lightbox-open" data-full="images/terrasse-nuit.jpg" data-caption="Terrasse de nuit — photo du restaurant">
+            <img src="images/terrasse-nuit-sm.jpg" alt="Terrasse de nuit : store blanc, gazon et lumières." width="506" height="900">
+          </button>
           <button type="button" class="gallery-item reveal lightbox-open" data-full="images/facade-nuit.jpg" data-caption="Façade de nuit — photo du restaurant">
             <img src="images/facade-nuit-sm.jpg" alt="Façade de nuit, enseigne L'AME DE HONAINE." width="900" height="507">
           </button>

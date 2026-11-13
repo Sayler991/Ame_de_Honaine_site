@@ -379,7 +379,8 @@ h3 { font-size: 1.4rem; margin: 0 0 0.7rem; color: var(--gold-bright); }
 /* Sections */
 .section { padding: 3.2rem 0 3.6rem; }
 .section-carte { background: var(--night); }
-.section-galerie { background: var(--night-4); }
+.section-lieu { background: var(--night-4); }
+.section-galerie { background: var(--night); }
 .section-venir { background: var(--night); }
 .section-commande { background: var(--night-2); }
 .section-head { text-align: center; margin-bottom: 1.8rem; }
@@ -490,6 +491,63 @@ h3 { font-size: 1.4rem; margin: 0 0 0.7rem; color: var(--gold-bright); }
   font-weight: 600;
 }
 
+
+/* Salle & terrasse */
+.lieu-grid {
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: 1fr;
+}
+.lieu-card {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: #071321;
+  cursor: zoom-in;
+  box-shadow: var(--shadow);
+}
+.lieu-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.55s ease;
+}
+.lieu-card:first-child {
+  aspect-ratio: 16 / 10;
+}
+.lieu-card:last-child { aspect-ratio: 4 / 5; }
+.lieu-card:last-child img { object-position: center 58%; }
+.lieu-card:hover img { transform: scale(1.04); }
+.lieu-label {
+  position: absolute;
+  left: 0.85rem;
+  bottom: 0.85rem;
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  color: var(--gold-bright);
+  background: rgba(7, 19, 33, 0.72);
+  padding: 0.2rem 0.7rem 0.3rem;
+  border-radius: 999px;
+  letter-spacing: 0.04em;
+  pointer-events: none;
+}
+@media (min-width: 700px) {
+  .lieu-grid {
+    grid-template-columns: 1.6fr 1fr;
+    align-items: stretch;
+  }
+  .lieu-card:first-child { aspect-ratio: 16 / 10; }
+  .lieu-card:last-child { aspect-ratio: auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lieu-card img { transition: none !important; transform: none !important; }
+}
 /* Gallery — masonry columns, natural photo proportions */
 .gallery-grid {
   column-count: 2;
