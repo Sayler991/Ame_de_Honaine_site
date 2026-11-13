@@ -8,8 +8,14 @@ Les fichiers originaux n'ont pas été altérés.
 Copies web : redimensionnées et légère correction de lumière uniquement
 (contraste +4 %, saturation +3 %, luminosité +2 %).
 
+- images/facade-terrasse-nuit.jpg (+ -sm.jpg)
+  Façade de nuit avec terrasse, enseigne lumineuse et palmiers.
+  Photo fournie par le client pour l'image d'ouverture (v5).
+  Original conservé hors site, non modifié. Copie web : même légère
+  correction de lumière que ci-dessus (pas d'agrandissement : 1280×720).
 - images/facade-nuit.jpg (+ -sm.jpg)
-  Façade de nuit, enseigne « L'AME DE HONAINE », terrasse à l'étage.
+  Façade de nuit, enseigne « L'AME DE HONAINE », terrasse à l'étage
+  (photo précédente, conservée dans la galerie).
 - images/enseigne-pecherie.jpg (+ -sm.jpg)
   Enseigne verticale lumineuse « PÊCHERIE » et logo rond.
 - images/plateau-friture.jpg (+ -sm.jpg)
