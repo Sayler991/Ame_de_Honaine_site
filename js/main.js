@@ -5,9 +5,10 @@
   const toast = document.querySelector("#toast");
   const lightbox = document.querySelector("#lightbox");
   const form = document.querySelector("#form-reservation");
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  const PLACEHOLDER_MSG =
-    "Numéro provisoire : 0X XX XX XX XX — à confirmer. Aucun appel ni message n'est lancé.";
+  const WHATSAPP_MSG =
+    "Aucun compte WhatsApp n'est indiqué sur la fiche Google. Vous pouvez appeler le 0773 98 48 53.";
 
   const onScroll = () => {
     if (!header) return;
@@ -16,17 +17,31 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
+  const heroMedia = document.querySelector(".hero-media");
+  if (!reduceMotion && heroMedia) {
+    const onParallax = () => {
+      const y = window.scrollY;
+      if (y < window.innerHeight * 1.2) {
+        heroMedia.style.transform = `translate3d(0, ${y * 0.18}px, 0)`;
+      }
+    };
+    window.addEventListener("scroll", onParallax, { passive: true });
+    onParallax();
+  }
+
   if (toggle && nav) {
     toggle.addEventListener("click", () => {
       const open = toggle.getAttribute("aria-expanded") === "true";
       toggle.setAttribute("aria-expanded", String(!open));
       nav.classList.toggle("is-open", !open);
+      header?.classList.toggle("is-open", !open);
       toggle.querySelector(".sr-only").textContent = open ? "Ouvrir le menu" : "Fermer le menu";
     });
     nav.querySelectorAll("a").forEach((a) => {
       a.addEventListener("click", () => {
         toggle.setAttribute("aria-expanded", "false");
         nav.classList.remove("is-open");
+        header?.classList.remove("is-open");
         toggle.querySelector(".sr-only").textContent = "Ouvrir le menu";
       });
     });
@@ -45,7 +60,9 @@
 
   document.querySelectorAll("[data-action]").forEach((btn) => {
     btn.addEventListener("click", () => {
-      showToast(PLACEHOLDER_MSG);
+      if (btn.dataset.action === "whatsapp") {
+        showToast(WHATSAPP_MSG);
+      }
     });
   });
 
@@ -128,8 +145,8 @@
     : null;
 
   document.querySelectorAll(".reveal").forEach((el, i) => {
-    el.style.animationDelay = `${(i % 6) * 0.07}s`;
-    if (io) io.observe(el);
+    el.style.transitionDelay = reduceMotion ? "0s" : `${(i % 6) * 0.07}s`;
+    if (io && !reduceMotion) io.observe(el);
     else el.classList.add("is-in");
   });
 })();
