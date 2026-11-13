@@ -1,6 +1,8 @@
 -- Contenu initial = site v6. Idempotent : n'écrase pas un contenu déjà modifié.
 insert into amehonaine.admins (user_id)
-values ('2e1cbdff-33a3-4939-b658-d0ccf77993ca')
+values
+  ('2e1cbdff-33a3-4939-b658-d0ccf77993ca'),
+  ('69d75e26-a112-4352-8b3e-eee32f46e793')
 on conflict do nothing;
 
 insert into amehonaine.site_content (id, data)
