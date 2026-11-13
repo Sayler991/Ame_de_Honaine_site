@@ -8,8 +8,8 @@
   <title>L'Âme de Honaine — Pêcherie | Maquette</title>
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-  <link rel="stylesheet" href="css/fonts.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/fonts.css?v=7">
+  <link rel="stylesheet" href="css/style.css?v=7">
 </head>
 <body>
   <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true">
@@ -119,7 +119,7 @@
           <p>Prix d'exemple — à confirmer</p>
         </header>
 
-        <div class="menu-grid">
+        <div class="menu-grid" id="menu-grid">
           <article class="menu-card reveal">
             <div class="menu-card-body">
               <h3>Soupe de poisson</h3>
@@ -376,7 +376,7 @@
         <header class="section-head reveal">
           <h2>Salle &amp; terrasse</h2>
         </header>
-        <div class="lieu-grid">
+        <div class="lieu-grid" id="lieu-grid">
           <button type="button" class="lieu-card reveal lightbox-open" data-full="images/salle-interieur.jpg" data-caption="Salle — photo du restaurant">
             <img
               src="images/salle-interieur-sm.jpg"
@@ -404,7 +404,7 @@
         <header class="section-head reveal">
           <h2>Galerie</h2>
         </header>
-        <div class="gallery-grid">
+        <div class="gallery-grid" id="gallery-grid">
           <button type="button" class="gallery-item wide reveal lightbox-open" data-full="images/salle-interieur.jpg" data-caption="Salle — photo du restaurant">
             <img src="images/salle-interieur-sm.jpg" alt="Salle du restaurant : tables blanches et chaises noires." width="900" height="506">
           </button>
@@ -572,6 +572,8 @@
     <p class="lightbox-caption"></p>
   </div>
 
-  <script src="js/main.js"></script>
+  <script src="config.js?v=7"></script>
+  <script src="js/main.js?v=7"></script>
+  <script src="js/cms.js?v=7"></script>
 </body>
 </html>

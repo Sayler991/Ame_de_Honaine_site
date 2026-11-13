@@ -37,3 +37,11 @@ Horaires indiqués : tous les jours 11h – 23h
 (horaires susceptibles de changer).
 Téléphone (fiche Google) : 0773 98 48 53.
 Adresse (plus code, fiche Google) : 58GX+P6Q, Honaïne.
+
+Espace gérant
+-------------
+Tableau de bord : /admin/ (même adresse que le site, plus admin/).
+Le propriétaire peut y modifier la carte, les prix, les photos,
+les horaires, le téléphone et les textes courts. Le site public
+lit ce contenu ; s'il est indisponible, la page affiche le contenu
+statique de cette version.
