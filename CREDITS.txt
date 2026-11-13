@@ -1,0 +1,65 @@
+Crédits — L'Âme de Honaine — Pêcherie (maquette)
+
+==================================================
+PHOTOS DU RESTAURANT
+==================================================
+Fournies par le client pour cette maquette.
+Les fichiers originaux n'ont pas été altérés.
+Copies web : redimensionnées et légère correction de lumière uniquement
+(contraste +4 %, saturation +3 %, luminosité +2 %).
+
+- images/facade-nuit.jpg (+ -sm.jpg)
+  Façade de nuit, enseigne « L'AME DE HONAINE », terrasse à l'étage.
+- images/enseigne-pecherie.jpg (+ -sm.jpg)
+  Enseigne verticale lumineuse « PÊCHERIE » et logo rond.
+- images/plateau-friture.jpg (+ -sm.jpg)
+  Plateau friture : crevettes, calamars, poissons, olives, citron.
+- images/logo.png, favicon-32.png, apple-touch-icon.png
+  Logo circulaire recadré à partir de l'enseigne verticale.
+
+==================================================
+PHOTOS D'AMBIANCE (banques d'images libres)
+==================================================
+Ces images ne représentent pas le restaurant ni la plage de Tafsout.
+Elles illustrent des plats ou un bateau de pêche, à remplacer
+par des photos de l'établissement.
+
+Licence Unsplash : https://unsplash.com/license
+(utilisation libre, y compris commerciale ; attribution du photographe
+recommandée. La page photographe n'a pas pu être ouverte depuis
+cet environnement : l'identifiant Unsplash est indiqué pour reporter
+le nom depuis unsplash.com.)
+
+- images/crevettes-plat.jpg
+  Unsplash, photo-1604908176997-125f25cc6f3d
+  https://unsplash.com/photos/photo-1604908176997-125f25cc6f3d
+
+Licence Pexels : https://www.pexels.com/license/
+(utilisation libre, y compris commerciale ; crédit du photographe
+encouragé. Reporter le nom depuis la page Pexels indiquée.)
+
+- images/dorade-grillee.jpg
+  Pexels #3296271 — https://www.pexels.com/photo/3296271/
+- images/poulpe-cuit.jpg
+  Pexels #3655916 — https://www.pexels.com/photo/3655916/
+- images/bateau-peche.jpg
+  Pexels #1630039 — https://www.pexels.com/photo/1630039/
+- images/fruits-de-mer.jpg
+  Pexels #566345 — https://www.pexels.com/photo/566345/
+
+==================================================
+POLICES
+==================================================
+Toutes sous SIL Open Font License 1.1 :
+- Cormorant Garamond — Catharsis Fonts / Christian Thalmann
+- Outfit — Rodrigo Fuenzalida
+- Limelight — Sorkin Type
+- Monoton — Vernon Adams
+
+==================================================
+CARTE
+==================================================
+Fond de carte : © OpenStreetMap contributors, ODbL.
+Marqueur : plage de Tafsout, Honaine
+(OpenStreetMap, way 184015694, env. 35.1863373, -1.6475097).
+L'emplacement exact du restaurant est à confirmer.
