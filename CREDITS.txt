@@ -114,3 +114,25 @@ Fond de carte : © OpenStreetMap contributors, ODbL.
 Marqueur : emplacement de la fiche Google,
 plus code 58GX+P6Q, environ 35,1768° N, 1,6519° O
 (35.1768393, -1.6518789).
+
+Icônes des plats (carte)
+------------------------
+Les 8 lignes de la carte (7 plats + Commande personnalisée) et
+l'icône de repli utilisée pour un plat sans correspondance portent
+des pictogrammes OpenMoji en couleur, licence CC BY-SA 4.0
+(https://openmoji.org/ — https://creativecommons.org/licenses/by-sa/4.0/).
+
+Fichiers dans icons/ :
+  melange.svg            — OpenMoji 1F37D (assiette et couverts)
+  calamar.svg            — OpenMoji 1F991 (calamar)
+  crevette.svg           — OpenMoji 1F990 (crevette)
+  paella.svg             — OpenMoji 1F958 (poêle peu profonde / paella)
+  soupe.svg              — OpenMoji 1F372 (plat qui fume / soupe)
+  bourek.svg             — OpenMoji 1F95F (dumpling / pâtisserie farcie)
+  chef.svg               — OpenMoji 1F9D1-200D-1F373 (personne cuisinier)
+  poisson.svg            — OpenMoji 1F41F (poisson, icône de repli)
+  calamar-crevettes.svg  — composition de 1F991 et 1F990
+                           (œuvre dérivée, également CC BY-SA 4.0)
+
+Une mention figure aussi en pied de page du site.
+

@@ -33,7 +33,8 @@ appeler le 0773 98 48 53 pour la confirmer.
 -----------
 La carte affiche les 7 plats confirmés par le patron, en une
 seule liste, plus une ligne « Commande personnalisée » (sur
-demande). Le nom de rue exact n'est pas indiqué sur
+demande). Chaque ligne a une icône OpenMoji (CC BY-SA 4.0),
+voir CREDITS.txt. Le nom de rue exact n'est pas indiqué sur
 la fiche Google. La balise noindex est conservée tant que la
 carte n'est pas complète.
 

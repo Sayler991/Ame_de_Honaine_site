@@ -162,6 +162,7 @@
       m.appendChild(h('div', { class: 'card item', style: 'display:block;border-top:0;padding:14px 0 4px' },
         h('div', { class: 'row' }, f('Plat', it, 'name'), f('Prix (DA)', it, 'price', { ph: 'ex. 2000' })),
         f('Précision (facultatif, très courte)', it, 'desc'),
+        f('Icône (chemin ou URL, vide = automatique ; à défaut : poisson)', it, 'icon', { ph: 'icons/poisson.svg' }),
         h('div', { class: 'acts' },
           h('label', { class: 'switch' }, hid, 'masquer'),
           h('button', { class: 'btn ghost sm', text: '↑', onclick: function () { move(D.menu, ii, -1); } }),
@@ -186,7 +187,8 @@
       f('Nom', co, 'name'),
       f('Libellé à la place du prix', co, 'price_label', { ph: 'Sur demande' }),
       f('Texte', co, 'text', { area: 1, rows: 2 }),
-      f('Texte du bouton', co, 'button', { ph: 'Appeler' })
+      f('Texte du bouton', co, 'button', { ph: 'Appeler' }),
+      f('Icône (chemin ou URL, vide = chef)', co, 'icon', { ph: 'icons/chef.svg' })
     ));
   }
 

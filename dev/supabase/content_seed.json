@@ -54,49 +54,56 @@
       "name": "Mélange",
       "price": "2000",
       "desc": "",
-      "hidden": false
+      "hidden": false,
+      "icon": "icons/melange.svg"
     },
     {
       "id": "special-calamar-crevettes",
       "name": "Spécial calamar & crevettes",
       "price": "2500",
       "desc": "",
-      "hidden": false
+      "hidden": false,
+      "icon": "icons/calamar-crevettes.svg"
     },
     {
       "id": "plat-calamar",
       "name": "Plat calamar",
       "price": "2500",
       "desc": "",
-      "hidden": false
+      "hidden": false,
+      "icon": "icons/calamar.svg"
     },
     {
       "id": "plat-crevette",
       "name": "Plat crevette",
       "price": "2500",
       "desc": "",
-      "hidden": false
+      "hidden": false,
+      "icon": "icons/crevette.svg"
     },
     {
       "id": "paella",
       "name": "Paella",
       "price": "800",
       "desc": "",
-      "hidden": false
+      "hidden": false,
+      "icon": "icons/paella.svg"
     },
     {
       "id": "soupe",
       "name": "Soupe de poisson",
       "price": "300",
       "desc": "",
-      "hidden": false
+      "hidden": false,
+      "icon": "icons/soupe.svg"
     },
     {
       "id": "bourek-crevette",
       "name": "Bourek crevette",
       "price": "300",
       "desc": "",
-      "hidden": false
+      "hidden": false,
+      "icon": "icons/bourek.svg"
     }
   ],
   "lieu": [
@@ -242,6 +249,7 @@
     "name": "Commande personnalisée",
     "price_label": "Sur demande",
     "text": "Plateau ou plat sur mesure ? Appelez-nous pour en discuter.",
-    "button": "Appeler"
+    "button": "Appeler",
+    "icon": "icons/chef.svg"
   }
 }

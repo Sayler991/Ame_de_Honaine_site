@@ -44,18 +44,61 @@
     }
     return menu;
   }
+  var ICON_FALLBACK = "icons/poisson.svg";
+  var ICON_BY_ID = {
+    melange: "icons/melange.svg",
+    "special-calamar-crevettes": "icons/calamar-crevettes.svg",
+    "plat-calamar": "icons/calamar.svg",
+    "plat-crevette": "icons/crevette.svg",
+    paella: "icons/paella.svg",
+    soupe: "icons/soupe.svg",
+    "bourek-crevette": "icons/bourek.svg"
+  };
+  function normalizeDishName(s) {
+    return String(s || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/&/g, "et").replace(/[^a-z0-9]+/g, " ").trim();
+  }
+  var ICON_BY_NAME = {
+    "melange": "icons/melange.svg",
+    "special calamar et crevettes": "icons/calamar-crevettes.svg",
+    "special calamar crevettes": "icons/calamar-crevettes.svg",
+    "plat calamar": "icons/calamar.svg",
+    "plat crevette": "icons/crevette.svg",
+    "paella": "icons/paella.svg",
+    "soupe de poisson": "icons/soupe.svg",
+    "bourek crevette": "icons/bourek.svg",
+    "commande personnalisee": "icons/chef.svg"
+  };
+  function dishIconSrc(it) {
+    if (!it) return ICON_FALLBACK;
+    if (it.icon) return media(it.icon);
+    if (it.id && ICON_BY_ID[it.id]) return ICON_BY_ID[it.id];
+    var n = normalizeDishName(it.name);
+    if (ICON_BY_NAME[n]) return ICON_BY_NAME[n];
+    if (/calamar/.test(n) && /crevette/.test(n)) return "icons/calamar-crevettes.svg";
+    if (/calamar|encornet/.test(n)) return "icons/calamar.svg";
+    if (/bourek|brick/.test(n)) return "icons/bourek.svg";
+    if (/crevette|shrimp/.test(n)) return "icons/crevette.svg";
+    if (/paella/.test(n)) return "icons/paella.svg";
+    if (/soupe|soup/.test(n)) return "icons/soupe.svg";
+    if (/commande personnalisee|sur mesure/.test(n)) return "icons/chef.svg";
+    return ICON_FALLBACK;
+  }
+  function dishVisualHtml(src) {
+    return "<span class=\"dish-visual\" aria-hidden=\"true\"><img src=\"" + escapeHtml(src || ICON_FALLBACK) + "\" alt=\"\" width=\"56\" height=\"56\"></span>";
+  }
   function defaultCustomOrder() {
     return {
       enabled: true,
       name: "Commande personnalisée",
       price_label: "Sur demande",
       text: "Plateau ou plat sur mesure ? Appelez-nous pour en discuter.",
-      button: "Appeler"
+      button: "Appeler",
+      icon: "icons/chef.svg"
     };
   }
   function renderCustomOrder(order, phone) {
     if (order && order.enabled === false) return "";
-    var o = order && (order.name || order.price_label || order.text || order.button) ? order : defaultCustomOrder();
+    var o = order && (order.name || order.price_label || order.text || order.button || order.icon) ? order : defaultCustomOrder();
     if (o.enabled === false) return "";
     var name = o.name || "Commande personnalisée";
     var priceLabel = o.price_label || "Sur demande";
@@ -63,13 +106,17 @@
     var button = o.button || "Appeler";
     var href = "tel:" + String(phone || "+213773984853").replace(/[^\d+]/g, "");
     if (href === "tel:") href = "tel:+213773984853";
+    var icon = dishIconSrc({ icon: o.icon, name: name, id: "commande-personnalisee" });
+    if (!o.icon && icon === ICON_FALLBACK) icon = "icons/chef.svg";
     return (
       "<li class=\"menu-custom\">" +
       "<div class=\"menu-custom-row\">" +
+      dishVisualHtml(icon) +
+      "<span class=\"dish-main\">" +
       "<span class=\"dish-name\">" + escapeHtml(name) + "</span>" +
       "<span class=\"dish-dots\" aria-hidden=\"true\"></span>" +
       "<span class=\"price price-tbc\">" + escapeHtml(priceLabel) + "</span>" +
-      "</div>" +
+      "</span></div>" +
       (text ? "<p class=\"menu-custom-text\">" + escapeHtml(text) + "</p>" : "") +
       "<a class=\"btn btn-gold menu-custom-call\" href=\"" + escapeHtml(href) + "\"><span>" + escapeHtml(button) + "</span></a>" +
       "</li>"
@@ -96,10 +143,11 @@
         "<button type=\"button\" data-act=\"inc\" aria-label=\"Ajouter " + escapeHtml(name) + "\">+</button></span>"
       ) : "";
       return (
-        "<li><span class=\"dish-name\">" + nameHtml + "</span>" +
+        "<li>" + dishVisualHtml(dishIconSrc(it)) +
+        "<span class=\"dish-main\"><span class=\"dish-name\">" + nameHtml + "</span>" +
         "<span class=\"dish-dots\" aria-hidden=\"true\"></span>" +
         (priceHtml ? "<span class=\"price\">" + priceHtml + "</span>" : "") +
-        qty + "</li>"
+        "</span>" + qty + "</li>"
       );
     }).join("");
     grid.innerHTML = "<ul class=\"menu-list\">" + lis + customHtml + "</ul>";
