@@ -213,7 +213,7 @@
       "<p class=\"meta\">" + escapeHtml(mode) + "</p>" +
       "<ul>" + rows + "</ul>" +
       notesHtml +
-      "<p class=\"sum-total\"><span>Total <small>(prix d'exemple)</small></span><span>" + formatDa(t.sum) + "</span></p>"
+      "<p class=\"sum-total\"><span>Total</span><span>" + formatDa(t.sum) + "</span></p>"
     );
   }
 

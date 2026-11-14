@@ -12,7 +12,7 @@
   function media(p) { return p || ""; }
   function formatDaHtml(n) {
     var num = String(n).replace(/[^\d]/g, "");
-    if (!num) return "Prix à confirmer";
+    if (!num) return "prix selon arrivage / à confirmer";
     return String(num).replace(/\B(?=(\d{3})+(?!\d))/g, "\u00a0") + "\u00a0<abbr title=\"dinars algériens\">DA</abbr>";
   }
   function setText(sel, v) {
@@ -59,13 +59,17 @@
         var desc = it.desc || "";
         var nameHtml = escapeHtml(name) + (desc ? " <em>(" + escapeHtml(desc) + ")</em>" : "");
         var dataName = desc ? name + " (" + desc + ")" : name;
-        return (
-          "<li><span class=\"dish-name\">" + nameHtml + "</span>" +
-          "<span class=\"price\">" + formatDaHtml(price) + "</span>" +
+        var priceClass = price ? "price" : "price price-tbc";
+        var qty = price ? (
           "<span class=\"qty-ctrl\" data-id=\"" + escapeHtml(id) + "\" data-name=\"" + escapeHtml(dataName) + "\" data-price=\"" + escapeHtml(price) + "\">" +
           "<button type=\"button\" data-act=\"dec\" aria-label=\"Retirer " + escapeHtml(name) + "\">−</button>" +
           "<span class=\"qty\" aria-live=\"polite\">0</span>" +
-          "<button type=\"button\" data-act=\"inc\" aria-label=\"Ajouter " + escapeHtml(name) + "\">+</button></span></li>"
+          "<button type=\"button\" data-act=\"inc\" aria-label=\"Ajouter " + escapeHtml(name) + "\">+</button></span>"
+        ) : "";
+        return (
+          "<li><span class=\"dish-name\">" + nameHtml + "</span>" +
+          "<span class=\"" + priceClass + "\">" + formatDaHtml(price) + "</span>" +
+          qty + "</li>"
         );
       }).join("");
       return '<article class="menu-card reveal is-in">' + mediaHtml + '<div class="menu-card-body"><h3>' + escapeHtml(c.name) + "</h3><ul class=\"dish-list\">" + lis + "</ul></div></article>";

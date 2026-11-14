@@ -29,9 +29,13 @@ appeler le 0773 98 48 53 pour la confirmer.
 
 À confirmer
 -----------
-Les prix de la carte sont des exemples. Le nom de rue exact n'est
-pas indiqué sur la fiche Google. Cette page reste une maquette
-(balise noindex conservée).
+Les prix confirmés par le patron (soupe, bourek crevette, mélange,
+spécial calamar & crevettes, plat calamar, plat crevette, paella)
+sont affichés en dinars. Les autres plats restent sans tarif
+chiffre (« prix selon arrivage / à confirmer ») : la carte n'est
+pas encore complète. Le nom de rue exact n'est pas indiqué sur
+la fiche Google. La balise noindex est conservée tant que la
+carte n'est pas complète.
 
 Horaires indiqués : tous les jours 11h – 23h
 (horaires susceptibles de changer).

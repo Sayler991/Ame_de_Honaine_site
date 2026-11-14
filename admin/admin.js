@@ -143,7 +143,7 @@
   }
 
   function carte(m) {
-    m.appendChild(h('p', { class: 'mut', text: 'Prix en dinars (DA). Cochez « masquer » pour retirer temporairement un plat (rupture). La photo de rubrique s’affiche en tête de carte.' }));
+    m.appendChild(h('p', { class: 'mut', text: 'Prix en dinars (DA). Laissez le prix vide pour afficher « prix selon arrivage / à confirmer ». Cochez « masquer » pour retirer temporairement un plat (rupture). La photo de rubrique s’affiche en tête de carte.' }));
     D.menu.forEach(function (c, ci) {
       var box = h('div', { class: 'card' });
       box.appendChild(h('div', { class: 'row' },
