@@ -16,11 +16,13 @@
     navToggle.addEventListener("click", function () {
       var open = navToggle.getAttribute("aria-expanded") !== "true";
       navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+      navToggle.setAttribute("aria-label", open ? "Fermer le menu" : "Ouvrir le menu");
       nav.classList.toggle("is-open", open);
     });
     nav.querySelectorAll("a").forEach(function (link) {
       link.addEventListener("click", function () {
         navToggle.setAttribute("aria-expanded", "false");
+        navToggle.setAttribute("aria-label", "Ouvrir le menu");
         nav.classList.remove("is-open");
       });
     });
@@ -59,16 +61,55 @@
   var lightbox = document.getElementById("lightbox");
   var lbImg = lightbox ? lightbox.querySelector("img") : null;
   var lbCap = lightbox ? lightbox.querySelector(".lightbox-caption") : null;
+  var lbCount = lightbox ? lightbox.querySelector(".lightbox-counter") : null;
   var lastFocus = null;
+  var lbItems = [];
+  var lbIndex = 0;
+  var touchStartX = 0;
+  var touchStartY = 0;
+  var touchActive = false;
+  var touchLock = null;
+  var SWIPE_THRESHOLD = 50;
 
-  function openLightbox(src, caption, alt) {
-    if (!lightbox || !lbImg) return;
-    lastFocus = document.activeElement;
+  function collectLightboxItems(btn) {
+    var root = btn && btn.closest("#gallery-grid, #lieu-grid");
+    var list = root ? root.querySelectorAll(".lightbox-open") : (btn ? [btn] : []);
+    return Array.prototype.slice.call(list);
+  }
+  function showLightboxAt(i) {
+    if (!lightbox || !lbImg || !lbItems.length) return;
+    var n = lbItems.length;
+    lbIndex = ((i % n) + n) % n;
+    var btn = lbItems[lbIndex];
+    var img = btn.querySelector("img");
+    var src = btn.getAttribute("data-full") || (img && (img.currentSrc || img.src)) || "";
     lbImg.src = src;
-    lbImg.alt = alt || "";
-    if (lbCap) lbCap.textContent = caption || "";
+    lbImg.alt = (img && img.alt) || "";
+    if (lbCap) lbCap.textContent = btn.getAttribute("data-caption") || "";
+    if (lbCount) {
+      lbCount.textContent = (lbIndex + 1) + " / " + n;
+      lbCount.hidden = n < 2;
+    }
+    var prev = lightbox.querySelector(".lightbox-prev");
+    var next = lightbox.querySelector(".lightbox-next");
+    if (prev) prev.hidden = n < 2;
+    if (next) next.hidden = n < 2;
+    if (n > 1) {
+      var pre = new Image();
+      var nxt = lbItems[(lbIndex + 1) % n];
+      if (nxt) pre.src = nxt.getAttribute("data-full") || "";
+    }
+  }
+  function lightboxPrev() { showLightboxAt(lbIndex - 1); }
+  function lightboxNext() { showLightboxAt(lbIndex + 1); }
+  function openLightboxFrom(btn) {
+    if (!lightbox || !lbImg || !btn) return;
+    lastFocus = document.activeElement;
+    lbItems = collectLightboxItems(btn);
+    if (!lbItems.length) lbItems = [btn];
     lightbox.hidden = false;
     document.body.classList.add("is-locked");
+    showLightboxAt(Math.max(0, lbItems.indexOf(btn)));
     var closeBtn = lightbox.querySelector(".lightbox-close");
     if (closeBtn) closeBtn.focus();
   }
@@ -77,13 +118,13 @@
     lightbox.hidden = true;
     if (lbImg) lbImg.removeAttribute("src");
     document.body.classList.remove("is-locked");
+    lbItems = [];
     if (lastFocus && lastFocus.focus) lastFocus.focus();
   }
   document.addEventListener("click", function (e) {
     var btn = e.target.closest(".lightbox-open");
     if (!btn) return;
-    var img = btn.querySelector("img");
-    openLightbox(btn.getAttribute("data-full"), btn.getAttribute("data-caption"), img ? img.alt : "");
+    openLightboxFrom(btn);
   });
   if (lightbox) {
     lightbox.addEventListener("click", function (e) {
@@ -91,6 +132,50 @@
     });
     var closeBtn = lightbox.querySelector(".lightbox-close");
     if (closeBtn) closeBtn.addEventListener("click", closeLightbox);
+    var prevBtn = lightbox.querySelector(".lightbox-prev");
+    var nextBtn = lightbox.querySelector(".lightbox-next");
+    if (prevBtn) prevBtn.addEventListener("click", function (e) { e.stopPropagation(); lightboxPrev(); });
+    if (nextBtn) nextBtn.addEventListener("click", function (e) { e.stopPropagation(); lightboxNext(); });
+    lightbox.addEventListener("touchstart", function (e) {
+      if (e.touches.length !== 1) return;
+      touchActive = true;
+      touchLock = null;
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+    lightbox.addEventListener("touchmove", function (e) {
+      if (!touchActive || e.touches.length !== 1) return;
+      var dx = e.touches[0].clientX - touchStartX;
+      var dy = e.touches[0].clientY - touchStartY;
+      if (!touchLock) {
+        if (Math.abs(dx) < 12 && Math.abs(dy) < 12) return;
+        touchLock = Math.abs(dx) > Math.abs(dy) ? "h" : "v";
+      }
+      if (touchLock === "h") e.preventDefault();
+    }, { passive: false });
+    lightbox.addEventListener("touchend", function (e) {
+      if (!touchActive) return;
+      touchActive = false;
+      var wasH = touchLock === "h";
+      touchLock = null;
+      if (!wasH || !e.changedTouches.length) return;
+      var dx = e.changedTouches[0].clientX - touchStartX;
+      if (dx <= -SWIPE_THRESHOLD) lightboxNext();
+      else if (dx >= SWIPE_THRESHOLD) lightboxPrev();
+    });
+    lightbox.addEventListener("touchcancel", function () {
+      touchActive = false;
+      touchLock = null;
+    });
+    lightbox.addEventListener("keydown", function (e) {
+      if (e.key !== "Tab" || lightbox.hidden) return;
+      var focusable = lightbox.querySelectorAll("button:not([hidden])");
+      if (!focusable.length) return;
+      var first = focusable[0];
+      var last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
   }
 
   // Cart
@@ -251,9 +336,13 @@
   }
 
   document.addEventListener("keydown", function (e) {
-    if (e.key !== "Escape") return;
-    if (lightbox && !lightbox.hidden) closeLightbox();
-    else if (orderModal && !orderModal.hidden) closeModal();
+    if (lightbox && !lightbox.hidden) {
+      if (e.key === "Escape") { e.preventDefault(); closeLightbox(); }
+      else if (e.key === "ArrowLeft") { e.preventDefault(); lightboxPrev(); }
+      else if (e.key === "ArrowRight") { e.preventDefault(); lightboxNext(); }
+      return;
+    }
+    if (e.key === "Escape" && orderModal && !orderModal.hidden) closeModal();
   });
 
   renderCart();

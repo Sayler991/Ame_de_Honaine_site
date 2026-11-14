@@ -8,8 +8,8 @@
   <title>L'Âme de Honaine — Pêcherie</title>
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-  <link rel="stylesheet" href="css/fonts.css?v=10">
-  <link rel="stylesheet" href="css/style.css?v=10">
+  <link rel="stylesheet" href="css/fonts.css?v=10b">
+  <link rel="stylesheet" href="css/style.css?v=10b">
 </head>
 <body>
   <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true">
@@ -37,12 +37,11 @@
         <img class="brand-logo" src="images/logo.png" width="48" height="48" alt="Logo L'Âme de Honaine Pêcherie">
         <span class="brand-text">
           <span class="brand-name">L'Âme de Honaine</span>
-          <span class="brand-tag">Pêcherie</span>
+          <span class="brand-tag">Restaurant Pêcherie</span>
         </span>
       </a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-principal">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Ouvrir le menu">
         <span class="nav-toggle-bar"></span>
-        <span class="sr-only">Ouvrir le menu</span>
       </button>
       <nav class="nav" id="menu-principal" aria-label="Sections">
         <a href="#accueil">Accueil</a>
@@ -151,6 +150,15 @@
               <span class="dish-dots" aria-hidden="true"></span>
               <span class="price">300&nbsp;<abbr title="dinars algériens">DA</abbr></span>
               <span class="qty-ctrl" data-id="bourek-crevette" data-name="Bourek crevette" data-price="300"><button type="button" data-act="dec" aria-label="Retirer Bourek crevette">−</button><span class="qty" aria-live="polite">0</span><button type="button" data-act="inc" aria-label="Ajouter Bourek crevette">+</button></span>
+            </li>
+            <li class="menu-custom">
+              <div class="menu-custom-row">
+                <span class="dish-name">Commande personnalisée</span>
+                <span class="dish-dots" aria-hidden="true"></span>
+                <span class="price price-tbc">Sur demande</span>
+              </div>
+              <p class="menu-custom-text">Plateau ou plat sur mesure ? Appelez-nous pour en discuter.</p>
+              <a class="btn btn-gold menu-custom-call" href="tel:+213773984853"><span>Appeler</span></a>
             </li>
           </ul>
         </div>
@@ -318,7 +326,7 @@
 
   <footer class="site-footer">
     <div class="container">
-      <p>L'Âme de Honaine — Pêcherie · Honaine</p>
+      <p>L'Âme de Honaine — Restaurant Pêcherie · Honaine</p>
     </div>
   </footer>
 
@@ -352,14 +360,19 @@
     </div>
   </div>
 
-  <div class="lightbox" id="lightbox" hidden>
+  <div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Visionneuse de photos">
     <button type="button" class="lightbox-close" aria-label="Fermer">&times;</button>
-    <img alt="">
-    <p class="lightbox-caption"></p>
+    <button type="button" class="lightbox-prev" aria-label="Photo précédente"><span aria-hidden="true">‹</span></button>
+    <button type="button" class="lightbox-next" aria-label="Photo suivante"><span aria-hidden="true">›</span></button>
+    <p class="lightbox-counter" aria-live="polite"></p>
+    <figure class="lightbox-figure">
+      <img alt="">
+      <figcaption class="lightbox-caption"></figcaption>
+    </figure>
   </div>
 
-  <script src="config.js?v=10"></script>
-  <script src="js/main.js?v=10"></script>
-  <script src="js/cms.js?v=10"></script>
+  <script src="config.js?v=10b"></script>
+  <script src="js/main.js?v=10b"></script>
+  <script src="js/cms.js?v=10b"></script>
 </body>
 </html>

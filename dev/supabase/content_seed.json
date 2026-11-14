@@ -1,7 +1,7 @@
 {
   "info": {
     "name": "L'Âme de Honaine",
-    "tagline": "Pêcherie",
+    "tagline": "Restaurant Pêcherie",
     "kicker": "Honaine · près de la plage de Tafsout",
     "phone": "+213773984853",
     "phone_display": "0773 98 48 53",
@@ -236,5 +236,12 @@
       "src_sm": "images/gmaps-plateau-friture-large-sm.jpg",
       "alt": "Grand plateau de fruits de mer."
     }
-  ]
+  ],
+  "custom_order": {
+    "enabled": true,
+    "name": "Commande personnalisée",
+    "price_label": "Sur demande",
+    "text": "Plateau ou plat sur mesure ? Appelez-nous pour en discuter.",
+    "button": "Appeler"
+  }
 }

@@ -24,7 +24,7 @@
     var href = phone ? "tel:" + String(phone).replace(/[^\d+]/g, "") : "";
     document.querySelectorAll('a[href^="tel:"]').forEach(function (a) {
       if (href) a.href = href;
-      if (display && !a.classList.contains("call-fab") && !a.classList.contains("btn-call-lg")) {
+      if (display && !a.classList.contains("call-fab") && !a.classList.contains("btn-call-lg") && !a.classList.contains("menu-custom-call")) {
         if (a.childElementCount === 0) a.textContent = display;
       }
     });
@@ -44,11 +44,43 @@
     }
     return menu;
   }
-  function renderMenu(menu) {
+  function defaultCustomOrder() {
+    return {
+      enabled: true,
+      name: "Commande personnalisée",
+      price_label: "Sur demande",
+      text: "Plateau ou plat sur mesure ? Appelez-nous pour en discuter.",
+      button: "Appeler"
+    };
+  }
+  function renderCustomOrder(order, phone) {
+    if (order && order.enabled === false) return "";
+    var o = order && (order.name || order.price_label || order.text || order.button) ? order : defaultCustomOrder();
+    if (o.enabled === false) return "";
+    var name = o.name || "Commande personnalisée";
+    var priceLabel = o.price_label || "Sur demande";
+    var text = o.text || "";
+    var button = o.button || "Appeler";
+    var href = "tel:" + String(phone || "+213773984853").replace(/[^\d+]/g, "");
+    if (href === "tel:") href = "tel:+213773984853";
+    return (
+      "<li class=\"menu-custom\">" +
+      "<div class=\"menu-custom-row\">" +
+      "<span class=\"dish-name\">" + escapeHtml(name) + "</span>" +
+      "<span class=\"dish-dots\" aria-hidden=\"true\"></span>" +
+      "<span class=\"price price-tbc\">" + escapeHtml(priceLabel) + "</span>" +
+      "</div>" +
+      (text ? "<p class=\"menu-custom-text\">" + escapeHtml(text) + "</p>" : "") +
+      "<a class=\"btn btn-gold menu-custom-call\" href=\"" + escapeHtml(href) + "\"><span>" + escapeHtml(button) + "</span></a>" +
+      "</li>"
+    );
+  }
+  function renderMenu(menu, custom, phone) {
     var grid = document.getElementById("menu-grid");
     if (!grid) return;
     var items = flattenMenu(menu).filter(function (it) { return it && !it.hidden; });
-    if (!items.length) return;
+    var customHtml = renderCustomOrder(custom, phone);
+    if (!items.length && !customHtml) return;
     var lis = items.map(function (it) {
       var id = it.id || String(it.name || "plat");
       var price = String(it.price || "").replace(/[^\d]/g, "");
@@ -70,9 +102,8 @@
         qty + "</li>"
       );
     }).join("");
-    grid.innerHTML = "<ul class=\"menu-list\">" + lis + "</ul>";
+    grid.innerHTML = "<ul class=\"menu-list\">" + lis + customHtml + "</ul>";
   }
-
   function renderLieu(lieu) {
     var grid = document.getElementById("lieu-grid");
     if (!grid || !lieu || !lieu.length) return;
@@ -120,7 +151,6 @@
     if (i.name) setText(".brand-name", i.name);
     if (i.tagline) {
       setText(".brand-tag", i.tagline);
-      setText(".hero-pecherie", i.tagline);
     }
     if (i.kicker) setText(".hero-kicker", i.kicker);
     var notice = i.notice || "";
@@ -165,7 +195,7 @@
     if (foot && i.name) {
       foot.textContent = i.name + (i.tagline ? " — " + i.tagline : "") + " · Honaine";
     }
-    renderMenu(d.menu);
+    renderMenu(d.menu, d.custom_order, (d.info || {}).phone);
     renderLieu(d.lieu);
     renderGallery(d.gallery);
     renderMarquee(d.marquee && d.marquee.length ? d.marquee : null);

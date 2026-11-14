@@ -55,6 +55,7 @@
           D.gallery = D.gallery || [];
           D.lieu = D.lieu || [];
           D.marquee = D.marquee || [];
+          if (!D.custom_order) D.custom_order = { enabled: true, name: 'Commande personnalisée', price_label: 'Sur demande', text: 'Plateau ou plat sur mesure ? Appelez-nous pour en discuter.', button: 'Appeler' };
           shell();
         });
       });
@@ -121,7 +122,7 @@
     m.appendChild(h('div', { class: 'card' },
       h('h2', { text: 'Textes & contacts' }),
       f('Nom', i, 'name'),
-      f('Accroche (sous le nom)', i, 'tagline'),
+      f('Accroche sous le nom (en-tête et pied de page)', i, 'tagline', { ph: 'Restaurant Pêcherie' }),
       f('Ligne de lieu (accueil)', i, 'kicker'),
       h('div', { class: 'row' },
         f('Téléphone (format +213…)', i, 'phone'),
@@ -172,6 +173,21 @@
       ));
     });
     m.appendChild(h('button', { class: 'btn', text: '+ Ajouter un plat', onclick: function () { D.menu.push({ id: slug('plat'), name: 'Nouveau plat', price: '', desc: '', hidden: false }); dirty(); go(TAB); } }));
+    if (!D.custom_order) D.custom_order = { enabled: true, name: 'Commande personnalisée', price_label: 'Sur demande', text: 'Plateau ou plat sur mesure ? Appelez-nous pour en discuter.', button: 'Appeler' };
+    var co = D.custom_order;
+    if (co.enabled == null) co.enabled = true;
+    var vis = h('input', { type: 'checkbox' });
+    vis.checked = co.enabled !== false;
+    vis.onchange = function () { co.enabled = vis.checked; dirty(); };
+    m.appendChild(h('div', { class: 'card item', style: 'display:block;border-top:0;padding:22px 0 4px' },
+      h('h2', { text: 'Commande personnalisée' }),
+      h('p', { class: 'mut', text: 'Dernière ligne de la carte, sous les plats. Le bouton Appeler utilise le numéro indiqué dans Infos & textes.' }),
+      h('label', { class: 'switch' }, vis, 'Afficher sur le site'),
+      f('Nom', co, 'name'),
+      f('Libellé à la place du prix', co, 'price_label', { ph: 'Sur demande' }),
+      f('Texte', co, 'text', { area: 1, rows: 2 }),
+      f('Texte du bouton', co, 'button', { ph: 'Appeler' })
+    ));
   }
 
   function horaires(m) {
@@ -279,7 +295,7 @@
         m.appendChild(h('div', { class: 'card row' },
           h('span', { text: new Date(v.saved_at).toLocaleString('fr-FR', { timeZone: 'Africa/Algiers' }) }),
           h('button', { class: 'btn ghost sm', text: 'Restaurer cette version', onclick: function () {
-            if (confirm('Restaurer cette version ?')) { D = v.data; D.info = D.info || {}; D.menu = flattenMenu(D.menu || []); D.hours = D.hours || []; D.gallery = D.gallery || []; D.lieu = D.lieu || []; D.marquee = D.marquee || []; dirty(); toast('Version chargée — cliquez sur Enregistrer.'); }
+            if (confirm('Restaurer cette version ?')) { D = v.data; D.info = D.info || {}; D.menu = flattenMenu(D.menu || []); D.hours = D.hours || []; D.gallery = D.gallery || []; D.lieu = D.lieu || []; D.marquee = D.marquee || []; if (!D.custom_order) D.custom_order = { enabled: true, name: 'Commande personnalisée', price_label: 'Sur demande', text: 'Plateau ou plat sur mesure ? Appelez-nous pour en discuter.', button: 'Appeler' }; dirty(); toast('Version chargée — cliquez sur Enregistrer.'); }
           } })
         ));
       });
