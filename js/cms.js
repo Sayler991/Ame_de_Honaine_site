@@ -103,10 +103,10 @@
     }).join("");
   }
 
-  function renderMarquee(gallery) {
+  function renderMarquee(items) {
     var track = document.querySelector(".photo-marquee-track");
-    if (!track || !gallery || !gallery.length) return;
-    var srcs = gallery.map(function (p) { return media(p.src_sm || p.src); }).filter(Boolean);
+    if (!track || !items || !items.length) return;
+    var srcs = items.map(function (p) { return media(p.src_sm || p.src); }).filter(Boolean);
     if (!srcs.length) return;
     var imgs = srcs.concat(srcs).map(function (s) {
       return '<img src="' + escapeHtml(s) + '" alt="" />';
@@ -168,7 +168,7 @@
     renderMenu(d.menu);
     renderLieu(d.lieu);
     renderGallery(d.gallery);
-    renderMarquee(d.gallery && d.gallery.length ? d.gallery : null);
+    renderMarquee(d.marquee && d.marquee.length ? d.marquee : null);
     if (window.AME && typeof window.AME.afterCms === "function") window.AME.afterCms();
   }
 

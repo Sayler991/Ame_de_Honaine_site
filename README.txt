@@ -18,6 +18,8 @@ Contenu
 - images/ : photos du restaurant, photos de la fiche Google, et deux
   photos d'illustration (dessert, jus)
 - fonts/ : polices installées dans le dossier, pas besoin de Google
+- La bande de photos qui défile n'affiche que des photos de plats
+  et de nourriture (photos du restaurant et de la fiche Google).
 - CREDITS.txt : sources des images et des polices
 - fiche_google.odt : texte prêt à coller pour la fiche Google
 

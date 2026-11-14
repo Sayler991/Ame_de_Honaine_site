@@ -54,6 +54,7 @@
           D.hours = D.hours || [];
           D.gallery = D.gallery || [];
           D.lieu = D.lieu || [];
+          D.marquee = D.marquee || [];
           shell();
         });
       });
@@ -278,7 +279,7 @@
         m.appendChild(h('div', { class: 'card row' },
           h('span', { text: new Date(v.saved_at).toLocaleString('fr-FR', { timeZone: 'Africa/Algiers' }) }),
           h('button', { class: 'btn ghost sm', text: 'Restaurer cette version', onclick: function () {
-            if (confirm('Restaurer cette version ?')) { D = v.data; D.info = D.info || {}; D.menu = flattenMenu(D.menu || []); D.hours = D.hours || []; D.gallery = D.gallery || []; D.lieu = D.lieu || []; dirty(); toast('Version chargée — cliquez sur Enregistrer.'); }
+            if (confirm('Restaurer cette version ?')) { D = v.data; D.info = D.info || {}; D.menu = flattenMenu(D.menu || []); D.hours = D.hours || []; D.gallery = D.gallery || []; D.lieu = D.lieu || []; D.marquee = D.marquee || []; dirty(); toast('Version chargée — cliquez sur Enregistrer.'); }
           } })
         ));
       });

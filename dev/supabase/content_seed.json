@@ -194,5 +194,47 @@
       "alt": "Crevettes et poissons sur l'étal.",
       "caption": "Étal de mer — photo publiée sur la fiche Google"
     }
+  ],
+  "marquee": [
+    {
+      "src": "images/gmaps-grillade-ardoise.jpg",
+      "src_sm": "images/gmaps-grillade-ardoise-sm.jpg",
+      "alt": "Poisson grillé sur une ardoise."
+    },
+    {
+      "src": "images/plateau-friture.jpg",
+      "src_sm": "images/plateau-friture-sm.jpg",
+      "alt": "Plateau friture du restaurant."
+    },
+    {
+      "src": "images/gmaps-etale-crevettes.jpg",
+      "src_sm": "images/gmaps-etale-crevettes-sm.jpg",
+      "alt": "Crevettes et poissons sur l'étal."
+    },
+    {
+      "src": "images/gmaps-plateau-grilles.jpg",
+      "src_sm": "images/gmaps-plateau-grilles-sm.jpg",
+      "alt": "Long plateau de poissons grillés."
+    },
+    {
+      "src": "images/gmaps-grillade-citron.jpg",
+      "src_sm": "images/gmaps-grillade-citron-sm.jpg",
+      "alt": "Poisson grillé, citron, oignon rouge et herbes."
+    },
+    {
+      "src": "images/gmaps-poisson-carte.jpg",
+      "src_sm": "images/gmaps-poisson-carte-sm.jpg",
+      "alt": "Poisson entier présenté avec une carte L'âme de Honain."
+    },
+    {
+      "src": "images/gmaps-etale-poissons.jpg",
+      "src_sm": "images/gmaps-etale-poissons-sm.jpg",
+      "alt": "Poissons frais présentés sur l'étal."
+    },
+    {
+      "src": "images/gmaps-plateau-friture-large.jpg",
+      "src_sm": "images/gmaps-plateau-friture-large-sm.jpg",
+      "alt": "Grand plateau de fruits de mer."
+    }
   ]
 }
