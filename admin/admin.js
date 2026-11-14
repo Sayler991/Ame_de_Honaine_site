@@ -72,7 +72,7 @@
     $('#boot').hidden = true; $('#login').hidden = true;
     var app = $('#app'); app.hidden = false; app.innerHTML = '';
     app.appendChild(h('header', { class: 'top' },
-      h('img', { src: '../images/logo.png', alt: '' }),
+      h('img', { src: '../images/logo-192.png', alt: '' }),
       h('b', { text: 'Espace gérant' }),
       h('span', { class: 'sp' }),
       h('a', { class: 'btn ghost sm', href: '../', target: '_blank', text: 'Voir le site' }),

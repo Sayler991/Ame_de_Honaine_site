@@ -138,11 +138,12 @@ h3 { font-size: 1.4rem; margin: 0 0 0.7rem; color: var(--gold-bright); }
   min-width: 0;
 }
 .brand-logo {
-  width: 42px;
-  height: 42px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  object-fit: cover;
-  box-shadow: 0 0 0 1px var(--gold-deep), 0 0 16px rgba(224, 197, 106, 0.35);
+  object-fit: contain;
+  flex: none;
+  box-shadow: 0 0 16px rgba(224, 197, 106, 0.22);
 }
 .brand-text { display: flex; flex-direction: column; line-height: 1.1; }
 .brand-name {
@@ -158,6 +159,7 @@ h3 { font-size: 1.4rem; margin: 0 0 0.7rem; color: var(--gold-bright); }
   white-space: nowrap;
 }
 @media (max-width: 400px) {
+  .brand-logo { width: 42px; height: 42px; }
   .brand-name { font-size: 0.98rem; }
   .brand-tag {
     font-size: 0.6rem;
@@ -836,6 +838,15 @@ h3 { font-size: 1.4rem; margin: 0 0 0.7rem; color: var(--gold-bright); }
 }
 .site-footer p { margin: 0.15rem 0; }
 .site-footer .note { margin-top: 0.3rem; }
+.footer-logo {
+  display: block;
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 0.85rem;
+  border-radius: 50%;
+  object-fit: contain;
+  box-shadow: 0 0 28px rgba(224, 197, 106, 0.2);
+}
 
 /* Floating call button */
 .call-fab {

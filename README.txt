@@ -15,8 +15,10 @@ Contenu
 -------
 - index.html : la page
 - css/ et js/ : apparence et interactions
-- images/ : photos du restaurant, photos de la fiche Google, et deux
-  photos d'illustration (dessert, jus)
+- images/ : photos du restaurant, photos de la fiche Google, deux
+  photos d'illustration (dessert, jus), et le logo (enseigne
+  photographiée, voir CREDITS.txt). Adresse Vercel :
+  https://ame-de-honaine.vercel.app/
 - fonts/ : polices installées dans le dossier, pas besoin de Google
 - La bande de photos qui défile n'affiche que des photos de plats
   et de nourriture (photos du restaurant et de la fiche Google).

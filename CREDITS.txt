@@ -136,3 +136,14 @@ Fichiers dans icons/ :
 
 Une mention figure aussi en pied de page du site.
 
+Logo (enseigne photographiée)
+-----------------------------
+Le logo du site est une photographie de l'enseigne circulaire
+lumineuse du restaurant, fournie par le client (14 novembre 2026).
+L'arrière-plan (mur en bois) et la bordure métallique perforée ont
+été retirés par un recadrage circulaire. Une très légère correction
+de perspective a été appliquée pour que le médaillon soit rond.
+Rien n'a été redessiné. Fichiers : images/logo-full.png (grande
+version transparente), images/logo.png, images/logo-192.png,
+images/logo-96.png, favicons et images/og-logo.jpg.
+
