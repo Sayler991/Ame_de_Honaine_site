@@ -12,7 +12,7 @@
   function media(p) { return p || ""; }
   function formatDaHtml(n) {
     var num = String(n).replace(/[^\d]/g, "");
-    if (!num) return "prix selon arrivage / à confirmer";
+    if (!num) return "";
     return String(num).replace(/\B(?=(\d{3})+(?!\d))/g, "\u00a0") + "\u00a0<abbr title=\"dinars algériens\">DA</abbr>";
   }
   function setText(sel, v) {
@@ -35,46 +35,42 @@
     });
   }
 
+  function flattenMenu(menu) {
+    if (!menu || !menu.length) return [];
+    if (menu[0] && Object.prototype.hasOwnProperty.call(menu[0], "items")) {
+      var out = [];
+      menu.forEach(function (c) { (c.items || []).forEach(function (it) { out.push(it); }); });
+      return out;
+    }
+    return menu;
+  }
   function renderMenu(menu) {
     var grid = document.getElementById("menu-grid");
-    if (!grid || !menu || !menu.length) return;
-    var html = menu.map(function (c) {
-      var items = (c.items || []).filter(function (it) { return !it.hidden; });
-      if (!items.length) return "";
-      var mediaHtml = "";
-      if (c.img) {
-        var full = media(c.img);
-        var sm = media(c.img_sm || c.img);
-        var cap = c.img_caption || "";
-        var captionHtml = cap ? '<span class="photo-caption">' + escapeHtml(cap) + "</span>" : "";
-        mediaHtml =
-          '<button type="button" class="menu-card-media lightbox-open" data-full="' + escapeHtml(full) + '" data-caption="' + escapeHtml(cap) + '">' +
-          '<img src="' + escapeHtml(sm) + '" srcset="' + escapeHtml(sm) + " 900w, " + escapeHtml(full) + ' 1280w" sizes="(max-width: 700px) 100vw, 360px" alt="' + escapeHtml(c.img_alt || "") + '">' +
-          captionHtml + "</button>";
-      }
-      var lis = items.map(function (it) {
-        var id = it.id || String(it.name || "plat");
-        var price = String(it.price || "").replace(/[^\d]/g, "");
-        var name = it.name || "";
-        var desc = it.desc || "";
-        var nameHtml = escapeHtml(name) + (desc ? " <em>(" + escapeHtml(desc) + ")</em>" : "");
-        var dataName = desc ? name + " (" + desc + ")" : name;
-        var priceClass = price ? "price" : "price price-tbc";
-        var qty = price ? (
-          "<span class=\"qty-ctrl\" data-id=\"" + escapeHtml(id) + "\" data-name=\"" + escapeHtml(dataName) + "\" data-price=\"" + escapeHtml(price) + "\">" +
-          "<button type=\"button\" data-act=\"dec\" aria-label=\"Retirer " + escapeHtml(name) + "\">−</button>" +
-          "<span class=\"qty\" aria-live=\"polite\">0</span>" +
-          "<button type=\"button\" data-act=\"inc\" aria-label=\"Ajouter " + escapeHtml(name) + "\">+</button></span>"
-        ) : "";
-        return (
-          "<li><span class=\"dish-name\">" + nameHtml + "</span>" +
-          "<span class=\"" + priceClass + "\">" + formatDaHtml(price) + "</span>" +
-          qty + "</li>"
-        );
-      }).join("");
-      return '<article class="menu-card reveal is-in">' + mediaHtml + '<div class="menu-card-body"><h3>' + escapeHtml(c.name) + "</h3><ul class=\"dish-list\">" + lis + "</ul></div></article>";
+    if (!grid) return;
+    var items = flattenMenu(menu).filter(function (it) { return it && !it.hidden; });
+    if (!items.length) return;
+    var lis = items.map(function (it) {
+      var id = it.id || String(it.name || "plat");
+      var price = String(it.price || "").replace(/[^\d]/g, "");
+      var name = it.name || "";
+      var desc = it.desc || "";
+      var nameHtml = escapeHtml(name) + (desc ? " <em>(" + escapeHtml(desc) + ")</em>" : "");
+      var dataName = desc ? name + " (" + desc + ")" : name;
+      var priceHtml = price ? formatDaHtml(price) : "";
+      var qty = price ? (
+        "<span class=\"qty-ctrl\" data-id=\"" + escapeHtml(id) + "\" data-name=\"" + escapeHtml(dataName) + "\" data-price=\"" + escapeHtml(price) + "\">" +
+        "<button type=\"button\" data-act=\"dec\" aria-label=\"Retirer " + escapeHtml(name) + "\">−</button>" +
+        "<span class=\"qty\" aria-live=\"polite\">0</span>" +
+        "<button type=\"button\" data-act=\"inc\" aria-label=\"Ajouter " + escapeHtml(name) + "\">+</button></span>"
+      ) : "";
+      return (
+        "<li><span class=\"dish-name\">" + nameHtml + "</span>" +
+        "<span class=\"dish-dots\" aria-hidden=\"true\"></span>" +
+        (priceHtml ? "<span class=\"price\">" + priceHtml + "</span>" : "") +
+        qty + "</li>"
+      );
     }).join("");
-    if (html) grid.innerHTML = html;
+    grid.innerHTML = "<ul class=\"menu-list\">" + lis + "</ul>";
   }
 
   function renderLieu(lieu) {
@@ -131,7 +127,7 @@
     if (i.open === false && !notice) notice = "Fermé exceptionnellement";
     document.querySelectorAll(".demo-banner, .site-footer .note").forEach(function (el) {
       if (notice) { el.textContent = notice; el.hidden = false; }
-      else if (el.classList.contains("demo-banner")) { el.hidden = true; }
+      else { el.hidden = true; el.textContent = ""; }
     });
     if (i.hours_text) {
       var hoursP = document.querySelector("#venir .info-card:first-of-type p:not(.note)");

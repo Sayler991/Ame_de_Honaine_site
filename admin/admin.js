@@ -50,7 +50,7 @@
           if (r2.error) return toast('Lecture impossible : ' + r2.error.message, true);
           D = r2.data.data || {};
           D.info = D.info || {};
-          D.menu = D.menu || [];
+          D.menu = flattenMenu(D.menu || []);
           D.hours = D.hours || [];
           D.gallery = D.gallery || [];
           D.lieu = D.lieu || [];
@@ -142,51 +142,35 @@
     return String(s || 'plat').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') + '-' + Date.now().toString(36);
   }
 
+  function flattenMenu(menu) {
+    if (!menu || !menu.length) return [];
+    if (menu[0] && Object.prototype.hasOwnProperty.call(menu[0], "items")) {
+      var out = [];
+      menu.forEach(function (c) { (c.items || []).forEach(function (it) { out.push(it); }); });
+      return out;
+    }
+    return menu;
+  }
   function carte(m) {
-    m.appendChild(h('p', { class: 'mut', text: 'Prix en dinars (DA). Laissez le prix vide pour afficher « prix selon arrivage / à confirmer ». Cochez « masquer » pour retirer temporairement un plat (rupture). La photo de rubrique s’affiche en tête de carte.' }));
-    D.menu.forEach(function (c, ci) {
-      var box = h('div', { class: 'card' });
-      box.appendChild(h('div', { class: 'row' },
-        f('Rubrique', c, 'name'),
+    m.appendChild(h('p', { class: 'mut', text: 'Une seule liste de plats, sans rubriques. Prix en dinars (DA). Vous pouvez ajouter, modifier, réordonner, masquer ou supprimer un plat.' }));
+    D.menu.forEach(function (it, ii) {
+      var hid = h('input', { type: 'checkbox' });
+      hid.checked = it.hidden === true;
+      hid.onchange = function () { it.hidden = hid.checked; dirty(); };
+      m.appendChild(h('div', { class: 'card item', style: 'display:block;border-top:0;padding:14px 0 4px' },
+        h('div', { class: 'row' }, f('Plat', it, 'name'), f('Prix (DA)', it, 'price', { ph: 'ex. 2000' })),
+        f('Précision (facultatif, très courte)', it, 'desc'),
         h('div', { class: 'acts' },
-          h('button', { class: 'btn ghost sm', text: '↑', onclick: function () { move(D.menu, ci, -1); } }),
-          h('button', { class: 'btn ghost sm', text: '↓', onclick: function () { move(D.menu, ci, 1); } }),
-          h('button', { class: 'btn red sm', text: 'Supprimer', onclick: function () { if (confirm('Supprimer la rubrique « ' + c.name + ' » et ses plats ?')) { D.menu.splice(ci, 1); dirty(); go(TAB); } } })
+          h('label', { class: 'switch' }, hid, 'masquer'),
+          h('button', { class: 'btn ghost sm', text: '↑', onclick: function () { move(D.menu, ii, -1); } }),
+          h('button', { class: 'btn ghost sm', text: '↓', onclick: function () { move(D.menu, ii, 1); } }),
+          upBtn('Photo', function (url) { it.img = url; go(TAB); }),
+          it.img ? h('button', { class: 'btn ghost sm', text: 'Retirer photo', onclick: function () { delete it.img; dirty(); go(TAB); } }) : null,
+          h('button', { class: 'btn red sm', text: 'Supprimer', onclick: function () { if (confirm('Supprimer « ' + it.name + ' » ?')) { D.menu.splice(ii, 1); dirty(); go(TAB); } } })
         )
       ));
-      var media = h('div', { class: 'cat-media' });
-      if (c.img) media.appendChild(h('img', { src: src(c.img), alt: '' }));
-      else media.appendChild(h('div', { class: 'ph' }));
-      media.appendChild(h('div', { class: 'acts' },
-        upBtn('Photo de rubrique', function (url) { c.img = url; c.img_sm = url; go(TAB); }),
-        c.img ? h('button', { class: 'btn ghost sm', text: 'Retirer la photo', onclick: function () { c.img = ''; c.img_sm = ''; dirty(); go(TAB); } }) : null
-      ));
-      box.appendChild(media);
-      if (c.img) box.appendChild(f('Légende de la photo (ex. « Photo d’illustration »)', c, 'img_caption'));
-      (c.items || []).forEach(function (it, ii) {
-        var hid = h('input', { type: 'checkbox' });
-        hid.checked = it.hidden === true;
-        hid.onchange = function () { it.hidden = hid.checked; dirty(); };
-        box.appendChild(h('div', { class: 'item' },
-          it.img ? h('img', { src: src(it.img), alt: '' }) : h('div', { class: 'ph' }),
-          h('div', null,
-            h('div', { class: 'row' }, f('Plat', it, 'name'), f('Prix (DA)', it, 'price', { ph: 'ex. 1800' })),
-            f('Précision (ex. selon calibre)', it, 'desc'),
-            h('div', { class: 'acts' },
-              h('label', { class: 'switch' }, hid, 'masquer'),
-              h('button', { class: 'btn ghost sm', text: '↑', onclick: function () { move(c.items, ii, -1); } }),
-              h('button', { class: 'btn ghost sm', text: '↓', onclick: function () { move(c.items, ii, 1); } }),
-              upBtn('Photo', function (url) { it.img = url; go(TAB); }),
-              it.img ? h('button', { class: 'btn ghost sm', text: 'Retirer photo', onclick: function () { delete it.img; dirty(); go(TAB); } }) : null,
-              h('button', { class: 'btn red sm', text: 'Supprimer', onclick: function () { c.items.splice(ii, 1); dirty(); go(TAB); } })
-            )
-          )
-        ));
-      });
-      box.appendChild(h('button', { class: 'btn ghost sm', text: '+ Ajouter un plat', onclick: function () { c.items = c.items || []; c.items.push({ id: slug('plat'), name: 'Nouveau plat', price: '', desc: '', hidden: false }); dirty(); go(TAB); } }));
-      m.appendChild(box);
     });
-    m.appendChild(h('button', { class: 'btn', text: '+ Ajouter une rubrique', onclick: function () { D.menu.push({ name: 'Nouvelle rubrique', img: '', items: [] }); dirty(); go(TAB); } }));
+    m.appendChild(h('button', { class: 'btn', text: '+ Ajouter un plat', onclick: function () { D.menu.push({ id: slug('plat'), name: 'Nouveau plat', price: '', desc: '', hidden: false }); dirty(); go(TAB); } }));
   }
 
   function horaires(m) {
@@ -294,7 +278,7 @@
         m.appendChild(h('div', { class: 'card row' },
           h('span', { text: new Date(v.saved_at).toLocaleString('fr-FR', { timeZone: 'Africa/Algiers' }) }),
           h('button', { class: 'btn ghost sm', text: 'Restaurer cette version', onclick: function () {
-            if (confirm('Restaurer cette version ?')) { D = v.data; D.info = D.info || {}; D.menu = D.menu || []; D.hours = D.hours || []; D.gallery = D.gallery || []; D.lieu = D.lieu || []; dirty(); toast('Version chargée — cliquez sur Enregistrer.'); }
+            if (confirm('Restaurer cette version ?')) { D = v.data; D.info = D.info || {}; D.menu = flattenMenu(D.menu || []); D.hours = D.hours || []; D.gallery = D.gallery || []; D.lieu = D.lieu || []; dirty(); toast('Version chargée — cliquez sur Enregistrer.'); }
           } })
         ));
       });

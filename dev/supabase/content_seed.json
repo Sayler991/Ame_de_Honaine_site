@@ -10,7 +10,7 @@
     "hours_text": "Tous les jours 11h – 23h",
     "hours_note": "Horaires susceptibles de changer",
     "open": true,
-    "notice": "Carte en cours de mise à jour — certains plats selon arrivage",
+    "notice": "",
     "order_intro": "Composez votre commande, puis appelez pour la confirmer. Rien n'est envoyé en ligne.",
     "maps_url": "https://maps.app.goo.gl/AyRdqwik2RZVF65s5",
     "osm_url": "https://www.openstreetmap.org/?mlat=35.1768393&mlon=-1.6518789#map=17/35.17684/-1.65188",
@@ -50,227 +50,53 @@
   ],
   "menu": [
     {
+      "id": "melange",
+      "name": "Mélange",
+      "price": "2000",
+      "desc": "",
+      "hidden": false
+    },
+    {
+      "id": "special-calamar-crevettes",
+      "name": "Spécial calamar & crevettes",
+      "price": "2500",
+      "desc": "",
+      "hidden": false
+    },
+    {
+      "id": "plat-calamar",
+      "name": "Plat calamar",
+      "price": "2500",
+      "desc": "",
+      "hidden": false
+    },
+    {
+      "id": "plat-crevette",
+      "name": "Plat crevette",
+      "price": "2500",
+      "desc": "",
+      "hidden": false
+    },
+    {
+      "id": "paella",
+      "name": "Paella",
+      "price": "800",
+      "desc": "",
+      "hidden": false
+    },
+    {
+      "id": "soupe",
       "name": "Soupe de poisson",
-      "img": "",
-      "img_caption": "",
-      "img_alt": "",
-      "items": [
-        {
-          "id": "soupe",
-          "name": "Soupe de poisson",
-          "price": "300",
-          "desc": "",
-          "hidden": false
-        }
-      ]
+      "price": "300",
+      "desc": "",
+      "hidden": false
     },
     {
-      "name": "Entrées",
-      "img": "images/gmaps-etale-crevettes.jpg",
-      "img_sm": "images/gmaps-etale-crevettes-sm.jpg",
-      "img_caption": "",
-      "img_alt": "Crevettes et poissons sur l'étal du restaurant.",
-      "items": [
-        {
-          "id": "salade-poulpe",
-          "name": "Salade de poulpe",
-          "price": "",
-          "desc": "",
-          "hidden": false
-        },
-        {
-          "id": "bourek-crevette",
-          "name": "Bourek crevette",
-          "price": "300",
-          "desc": "",
-          "hidden": false
-        },
-        {
-          "id": "entree-jour",
-          "name": "Entrée du jour",
-          "price": "",
-          "desc": "",
-          "hidden": false
-        }
-      ]
-    },
-    {
-      "name": "Poissons grillés au charbon",
-      "img": "images/gmaps-grillade-ardoise.jpg",
-      "img_sm": "images/gmaps-grillade-ardoise-sm.jpg",
-      "img_caption": "",
-      "img_alt": "Poisson grillé présenté sur une ardoise, citron et salade.",
-      "items": [
-        {
-          "id": "sardines",
-          "name": "Sardines",
-          "price": "",
-          "desc": "",
-          "hidden": false
-        },
-        {
-          "id": "dorade",
-          "name": "Dorade",
-          "price": "",
-          "desc": "selon calibre",
-          "hidden": false
-        },
-        {
-          "id": "loup",
-          "name": "Loup",
-          "price": "",
-          "desc": "",
-          "hidden": false
-        },
-        {
-          "id": "espadon",
-          "name": "Espadon",
-          "price": "",
-          "desc": "",
-          "hidden": false
-        }
-      ]
-    },
-    {
-      "name": "Friture",
-      "img": "images/plateau-friture.jpg",
-      "img_sm": "images/plateau-friture-sm.jpg",
-      "img_caption": "",
-      "img_alt": "Plateau de friture : crevettes, calamars, poissons, olives et citron.",
-      "items": [
-        {
-          "id": "friture-mer",
-          "name": "Friture de mer",
-          "price": "",
-          "desc": "",
-          "hidden": false
-        },
-        {
-          "id": "plateau-friture",
-          "name": "Plateau friture",
-          "price": "",
-          "desc": "crevettes, calamars, poissons",
-          "hidden": false
-        }
-      ]
-    },
-    {
-      "name": "Plats de fruits de mer",
-      "img": "images/gmaps-plateau-friture-large.jpg",
-      "img_sm": "images/gmaps-plateau-friture-large-sm.jpg",
-      "img_caption": "",
-      "img_alt": "Grand plateau de poissons et crevettes du restaurant.",
-      "items": [
-        {
-          "id": "melange",
-          "name": "Mélange",
-          "price": "2000",
-          "desc": "assiette mixte de la mer",
-          "hidden": false
-        },
-        {
-          "id": "special-calamar-crevettes",
-          "name": "Spécial calamar & crevettes",
-          "price": "2500",
-          "desc": "",
-          "hidden": false
-        },
-        {
-          "id": "plat-calamar",
-          "name": "Plat calamar",
-          "price": "2500",
-          "desc": "",
-          "hidden": false
-        },
-        {
-          "id": "plat-crevette",
-          "name": "Plat crevette",
-          "price": "2500",
-          "desc": "",
-          "hidden": false
-        },
-        {
-          "id": "paella",
-          "name": "Paella",
-          "price": "800",
-          "desc": "",
-          "hidden": false
-        },
-        {
-          "id": "poulpe-tomate",
-          "name": "Poulpe sauce tomate",
-          "price": "",
-          "desc": "",
-          "hidden": false
-        }
-      ]
-    },
-    {
-      "name": "Desserts",
-      "img": "images/illus-creme-caramel.jpg",
-      "img_sm": "images/illus-creme-caramel-sm.jpg",
-      "img_caption": "Photo d'illustration",
-      "img_alt": "Crème caramel, photo d'illustration.",
-      "items": [
-        {
-          "id": "creme-caramel",
-          "name": "Crème caramel",
-          "price": "",
-          "desc": "",
-          "hidden": false
-        },
-        {
-          "id": "fruits",
-          "name": "Fruits de saison",
-          "price": "",
-          "desc": "",
-          "hidden": false
-        },
-        {
-          "id": "gateau",
-          "name": "Gâteau du jour",
-          "price": "",
-          "desc": "",
-          "hidden": false
-        }
-      ]
-    },
-    {
-      "name": "Boissons",
-      "img": "images/illus-jus.jpg",
-      "img_sm": "images/illus-jus-sm.jpg",
-      "img_caption": "Photo d'illustration",
-      "img_alt": "Jus d'orange, photo d'illustration.",
-      "items": [
-        {
-          "id": "eau",
-          "name": "Eau minérale",
-          "price": "",
-          "desc": "",
-          "hidden": false
-        },
-        {
-          "id": "soda",
-          "name": "Soda",
-          "price": "",
-          "desc": "",
-          "hidden": false
-        },
-        {
-          "id": "jus",
-          "name": "Jus pressé",
-          "price": "",
-          "desc": "",
-          "hidden": false
-        },
-        {
-          "id": "the-cafe",
-          "name": "Thé ou café",
-          "price": "",
-          "desc": "",
-          "hidden": false
-        }
-      ]
+      "id": "bourek-crevette",
+      "name": "Bourek crevette",
+      "price": "300",
+      "desc": "",
+      "hidden": false
     }
   ],
   "lieu": [

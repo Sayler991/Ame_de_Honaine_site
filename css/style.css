@@ -14,7 +14,7 @@
   --line: rgba(224, 197, 106, 0.28);
   --card: rgba(15, 36, 64, 0.72);
   --header-h: 4.25rem;
-  --banner-h: 2.85rem;
+  --banner-h: 0px;
   --fab-space: 7.5rem;
   --radius: 1rem;
   --shadow: 0 18px 50px rgba(0, 0, 0, 0.38);
@@ -392,7 +392,57 @@ h3 { font-size: 1.4rem; margin: 0 0 0.7rem; color: var(--gold-bright); }
   font-size: 0.95rem;
 }
 
-/* Menu cards */
+/* Menu — une seule liste nom …… prix */
+.menu-list-wrap {
+  max-width: 36rem;
+  margin: 0 auto;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.15rem 1.35rem 1.25rem;
+}
+.menu-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.menu-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
+  padding: 0.72rem 0;
+  border-top: 1px solid rgba(224, 197, 106, 0.16);
+}
+.menu-list li:first-child { border-top: 0; padding-top: 0.15rem; }
+.menu-list .dish-name {
+  flex: 0 1 auto;
+  font-family: var(--font-serif);
+  font-size: 1.12rem;
+  color: var(--foam);
+  line-height: 1.25;
+}
+.menu-list .dish-dots {
+  flex: 1 1 auto;
+  border-bottom: 1px dotted rgba(224, 197, 106, 0.45);
+  min-width: 1.25rem;
+  transform: translateY(-0.28em);
+}
+.menu-list .price {
+  flex: 0 0 auto;
+  color: var(--gold);
+  font-weight: 600;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+}
+.menu-list .qty-ctrl {
+  flex: 0 0 auto;
+  align-self: center;
+  margin-left: 0.15rem;
+}
+
+/* Ancien maillage cartes (conservé si un ancien contenu CMS l'utilise) */
 .menu-grid {
   display: grid;
   gap: 1.2rem;
